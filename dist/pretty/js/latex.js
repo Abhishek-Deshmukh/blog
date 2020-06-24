@@ -19,4 +19,4 @@
     }
 } opts.src = url; element = formats[opts.format].call(opts); $this.html('').append(element); if (opts.callback) {
     opts.callback.call(element);
-} }); }; $.fn.latex.defaults = { format: 'gif', url: 'http://latex.codecogs.com/{f}.latex?{e}' }; }(jQuery));
+} }); }; $.fn.latex.defaults = { format: 'gif', url: 'https://latex.codecogs.com/{f}.latex?{e}' }; }(jQuery));
