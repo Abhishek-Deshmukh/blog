@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>Converting Imaginary Integrals into real ones</title>
+    <meta name="author" content="Abhishek Anil Deshmukh">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="">
+    <meta name="description" content="Converting integrals into real ones">
+    <meta name="keywords" content="Math, Mathematics, Integrating, Complex, Imaginary, Integration">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container"><a class="material-icons heading-home" href="../index.html">home</a><br><span class="heading">Imaginary integrals => Real ones</span><br>
+        <p class="date">9 May, 2020
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <p>
+            Okay it&apos;s 6 steps and if you do it enough times it wil be down to
+            only 5 steps.
+          </p>
+          <p>
+            Just so all of this actually makes sense, we will be using the
+            following example:
+          </p>
+          <div class="math">f(z) = \frac{1}{z}</div>
+          <p>Above equation is to be integrated along the circle<span class="imath">|z|=R</span>, starting and finishing on the route.</p>
+          <p>Before getting into the sateps lets make use we know the basics</p>
+          <h2>Basic Definition</h2>
+          <p>An imaginary number is conventionally denoted as</p>
+          <div class="math">z = x + \iota y</div>
+          <p>and a function is denoted as</p>
+          <p class="imath">f(z) = u(x, y) + \iota v(x, y)</p>
+          <p>
+            here &grave;u&grave; and &grave;v&grave; are functions of &grave;x&grave; and &grave;y&grave;, and that &grave;i&grave; thing is
+            iota also known as root of -1.
+          </p>
+          <h2>1) Path</h2>
+          <p>Write the path in terms of only one variable, conventionally &grave;t&grave;. So, here we can write &apos;z&apos; as:</p>
+          <div class="math">z = R \cos t + \iota R \sin t</div>
+          <p>from this we can directly compare and get &grave;x&grave; and &grave;y&grave;</p>
+          <p class="math">x = R \cos t</p>
+          <p class="math">y = R \sin t</p>
+          <p>That was all step 1 was.</p>
+          <h2>2) Function to x y</h2>
+          <p>Now we will get function which is in terms of &apos;u&apos; and &apos;v&apos; into terms of &apos;x&apos; and &apos;y&apos;.</p>
+          <div class="math">f(z) = \frac{1}{z}</div>
+          <div class="math">f(z) = \frac{1}{x + \iota y}</div>
+          <div class="math">f(z) = \frac{x-\iota y}{x^2 + y^2}</div>
+          <p>From this we can take out values of &apos;u&apos; and &apos;v&apos; as</p>
+          <div class="math">u = \frac{x}{x^2+y^2};v = -\frac{y}{x^2+y^2}</div>
+          <h2>3) uv to t</h2>
+          <p>At this step substitute the earlier values of &apos;u&apos; and &apos;v&apos; we have in terms of &apos;x&apos; and &apos;y&apos;, to have it in terms to &apos;t&apos;.</p>
+          <div class="math">u = \frac{\cos t} {R}</div>
+          <div class="math">v = -\frac{\sin t} {R}</div>          We are almost done now.
+          <h2>4) Piecing it all together</h2>
+          <p>Now plug them into this equation you can do the following.</p>
+          <div class="math">\int{f(z)} = \int{u\frac{dx}{dt}dt} - \int{v\frac{dy}{dt}dt} + \iota\int{u\frac{dy}{dt}dt} +\iota\int{u\frac{dx}{dt}dt}</div>
+          <h2>5) Precaution</h2>
+          <p>In the very likely case you forget the equation:</p>
+          <p>You can get it directly from this:</p>
+          <div class="math">\int{f(z)dz} = \int{(u+\iota v)(dx + \iota dy)}</div>
+          <p>Just multiply those two brackets in the L.H.S and you&apos;ll be at the equation above it in 2 lines.</p>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        </div>
+      </div>
+    </div>
+    <script src="../js/latex.js"></script>
+    <script src="../js/github-cards.js"></script>
+    <script src="../js/main.js"></script>
+    <footer>
+      Made with love by
+      <a href="https://abhishek-deshmukh.ml" target="_blank">Abhishek Anil Deshmukh</a>
+    </footer>
+  </body>
+</html>

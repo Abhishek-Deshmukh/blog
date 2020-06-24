@@ -37,7 +37,7 @@ p {
 h2 {
   margin-bottom: 0px;
   margin-top: 40px;
-  ::after {
+  &:after {
     content: '⏎';
   }
 }
@@ -47,7 +47,7 @@ h3 {
   line-height: 1.2;
   letter-spacing: 0em;
   font-style: normal;
-  ::after {
+  &:after {
     content: ':';
   }
 }
