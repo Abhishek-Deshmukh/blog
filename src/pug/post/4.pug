@@ -1,0 +1,202 @@
+extends include/_post_base.pug
+block title
+  title Test Driven development and schools
+
+block append head
+  meta(name="description", content="Test driven development and schools")
+  meta(name="keywords", content="Blog, programming, education, TDD, test driven development, school, testing, tests")
+
+block heading
+  |Test Driven development and schools
+block date
+  |13 May, 2020
+block body
+  p
+    | Disclaimer: I am just a student, think with your Discretion . I am
+    | just trying to put together things based on what I have learned till
+    | now. Feel free to
+    a(href='mailto:deshmukhabhishek369@gmail.com') mail
+    |  if you wanna
+    |             talk.
+  p This post is not about teaching programming in school.
+  p
+    | Even if you are not a programmer or web-developer do not worry this
+    | post has been written with you in mind as well.
+  p
+    | First some background about me, I am a physics student with an
+    | interest in programming, web development, running, etc.. you know
+    | all the good stuff. I am in my second year as I am writing this blog
+    | post. I also do some freelancing, and not particularly happy with
+    | the way education was done with me.
+  h2 Test Driven Development
+  p
+    | Let me quickly go over what Test Driven Development(TDD) is all
+    | about
+  p
+    a(href='https://en.wikipedia.org/wiki/Test-driven_development') Wikipedia
+    |             says:
+  .quote
+    | Test-driven development (TDD) is a software development process that
+    | relies on the repetition of a very short development cycle:
+    | requirements are turned into very specific test cases, then the code
+    | is improved so that the tests pass.
+  p
+    | I know, it sounds jargon. Let me explain, it means that you decide
+    | on the purpose of what your program is supposed to do, then you
+    | write a script/program which checks if your program is doing what it
+    | is supposed to.
+  p
+    | Note that this &quot;test/s&quot; is/are written before writing the actual
+    | program. Now that the test has been written you go ahead and run the
+    | test, and it
+    a fails
+    |  because you haven&apos;t written the program
+    |             yet, then you write the program and run the test on it again, and
+    |             keep on repeating till the tests
+    span(style='color: green;') pass
+    | .
+  p
+    | Now that your tests have passed you refactor the code write it in a
+    | better manner, put in the styling, the finishing touch if you would
+    | like to call it that.
+  p
+    | This gave rise to the famous phrase &quot;
+    a red
+    | -
+    span(style='color: green;') green
+    | -refactor&quot;.
+  p
+    | To someone who hasn&apos;t been doing this, I know this sounds lame and a
+    | lot of work but when you do it once, you cannot stop doing it.
+  p
+    | Yeah, the last line has its importance which will be discussed
+    | below.
+  h2 Schools
+  p
+    | School is someplace where education is provided.
+  p
+    | Education is an important part of anybody&apos;s life. A formal level of
+    | education is necessary for each and every individual.
+  p
+    | In case you are unfamiliar with what education is all about, here is
+    | what
+    a(href='https://en.wikipedia.org/wiki/Education') Wikipedia
+    |  has
+    |             to say about it.
+  .quote
+    | Education is the process of facilitating learning, or the
+    | acquisition of knowledge, skills, values, beliefs, and habits.
+  p
+    | So basically, it means, teaching people(primarily kids) how to do
+    | things. I say primarily kids because education as an adult is not
+    | considered necessary which needs a little more discussion if you ask
+    | me(maybe another post).
+  h2 TDD and schools
+  p
+    | When you look at the explanation for what education is it looks
+    | eerily similar to what programming is about. Both can be generalized
+    | as
+  .quote
+    | Enabling someone/something to do a particular thing/process.
+  p
+    | This begs one to ask the question if the techniques used to do one
+    | can be used in the other one.
+  p
+    | Whether or not you(programmer/teacher) have been successful, in your
+    | attempt of, enabling a person or computer to be able to do a certain
+    | task, can be known via testing.
+  p
+    | That explains and radicalizes the tradition of tests in school.
+    | Meaning you are checking whether or not, the student is capable of
+    | doing the task/process it was taught, when asked to do it.
+  p
+    | The world seems to have already done that, whether or not the
+    | testing &quot;philosophy&quot; was derived from programming, or if they have
+    | another source is irrelevant, but none the less interesting.
+  h2 Going a step further
+  p
+    | Now that we have taken in a method used in programming, we could ask
+    | if we are doing the mistakes which programmers do in that method, in
+    | teaching.
+  p
+    | After scavenging through the internet and via personal experiences I
+    | was able to write a (more or less exhaustive) list of mistakes done
+    | using TDD.
+  ul
+    li Architectural testing
+    li Non-user accessible testing
+    li Dependency-hell tests
+  p
+    | If you run into any new ones
+    a(href='mailto:deshmukhabhishek369@gmail.com') let me know
+    |  and
+    |             I&apos;ll plug it in here, with credits of-course.
+  p
+    | Let&apos;s got through them one by one in detail.
+  h3 Architectural testing
+  p
+    | This usually happens when a developer likes TDD too much, the
+    | developer not only writes tests for the task completion, but also
+    | for how the program/script is implementing it. This may sound
+    | unimportant and might give a sense of strength to the tests. But it
+    | removes one of the main advantages that come along with TDD.
+  p
+    | One of the main advantages of TDD is that you can change your code
+    | and test if it still works. Meaning you can implement it using a
+    | different/better method and check if that works without by just
+    | running the tests and not rewriting them. But if your tests are
+    | testing the method by which the task is done then you will have to
+    | rewrite the tests which increase work.
+  p
+    | The user of the software (usually) does not care how it does the
+    | provided task, writing tests for that only increases the difficulty
+    | when you find out a better method to complete the task.
+  p
+    u What does this mean for testing in schools?
+  p
+    | This tells them to not love testing too much...
+  p
+    | On a serious note, this leads our attention to the question
+    br
+    |             &quot;what are tests in schools testing?&quot;
+    br
+    | Are they testing if the
+    |             student is capable of doing the task, or are they making sure that
+    |             the student is doing it using only the provided/decided method?
+  p
+    | The problem which Architectural testing causes are re-writing the
+    | tests when new/better methods are found. That is an issue when
+    | programming, But in school, the test/question papers are written
+    | every year anyway, so one might assert that this is a pure
+    | programming issue, and architectural testing is fine in school
+    | tests.
+  p
+    | But this discussion brings our attention to the question as to,
+    br
+    | whether we want our kids to be not given the freedom to do the
+    |             task in question by any method they know?
+  p
+    | If you give it enough though that last question is a rather tricky
+    | one. Mainly because it is difficult to generalize a statement for
+    | all situations, so let me try to be a little exhaustive about the
+    | answer.
+  .quote
+    | Tests in schools should not check, by what method the asked task was
+    | performed, and should only check if the output is what has been
+    | expected. Unless the students have been taught a new and &quot;better&quot;
+    | method to do the task and that is what the test is about.
+  p
+    br
+    br
+    |             I was not able to find the translations of the other 2 testing
+    |             mistakes into the education space.
+  h2 Ending remarks
+  p
+    | TDD seems like a good method which formalizes education in schools
+    | to keep things in check.
+  p
+    | It only teaches students to do a task and positively re-inforces
+    | teachers to teach students to do tasks and not how to think by
+    | themselves and do the task. We are creating people who will be able
+    | to do pre-defined things, but we are not teaching them how to come
+    | up with things to do.

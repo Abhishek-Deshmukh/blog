@@ -1,11 +1,69 @@
 extends include/_base
 
 block title
-  title pug-html-scss-ts-template🐶
+  title Deshmukh Blog
 
 block append body
-  // Place your content here
-  // written in the body tag
-  h1.title gulp4-pug-scss-ts-template🐶
-  p updated with love by
-  a(href="https://deshmukh.ml") Abhishek Anil Deshmukh
+  div.container
+    h1 Blog
+    h2 Me
+    div.github-card(data-github="abhishek-deshmukh", data-width="400", data-height="155", data-theme="default")
+    h2 Just my blog
+    div.row
+      div.col-sm-12.col-md-9
+
+        a(href="./post/6.html")
+          div.post-card
+            span.post-heading GUI for Nginx
+            br
+            span.post-text
+              |Nginx can be hassel with all you wanna do
+              |is host your site, or simply use it as a reverse_proxy,
+              |Here is an application to make the job simple.
+
+        a(href="./post/5.html")
+          div.post-card
+            span.post-heading
+              |Converting imaginary Integrals into real ones
+            br
+            span.post-text It's what it says
+
+        a(href="./post/4.html")
+          div.post-card
+            span.post-heading Test Driven development and school
+            br
+            span.post-text
+              |it basically means that you decide on a purpose of what
+              |your program is supposed to do, then you write a
+              |script/program which...
+
+        a(href="./post/3.html")
+          div.post-card
+            span.post-heading How to get a discord bot
+            br
+            span.post-text
+              |To get into the developer portal open up you favourite.
+              |browser and go to...
+
+        a(href="./post/2.html")
+          div.post-card
+            span.post-heading
+              |Turning your application into a web app with STAR
+            br
+            span.post-text
+              | There are often times that you write script that needs
+              | to be deployed a website or a web app, doing this can
+              | be difficult so...
+
+        a(href="./post/1.html")
+          div.post-card
+            span.post-heading Test Post Heading
+            br
+            span.post-text
+              |Post content a lot of it meaning a lot of content, Just
+              |kidding this will just have the first few words or
+              |something of the post.
+
+  footer
+    |Made with love by
+    a(href="https://abhishek-deshmukh.ml") Abhishek Anil Deshmukh

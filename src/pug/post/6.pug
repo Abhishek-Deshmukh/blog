@@ -1,0 +1,303 @@
+
+extends include/_post_base.pug
+block title
+  title A GUI for nginx
+
+block append head
+  meta(name="description", content="Setting up nginx reverse proxy with a front-end")
+  meta(name="keywords", content="Math, Mathematics, Integrating, Complex, Imaginary, Integration")
+
+block heading
+  | A GUI for Nginx
+block date
+  | 2 June, 2020
+block body
+  p
+    | i recently rented a new server from ovh cloud, they are super cheap
+    | check them out.
+  p
+    | no, they do not sponsor me.
+  p
+    | getting your hand into nginx without any prior knowledge about
+    | servers and reverse proxies and all those fancy terms, can be
+    | difficult
+  p
+    | although it is important that to learn all of them, sometimes you
+    | just want it working and quickly.
+  h2 reverse proxy
+  p first lets get the concept out of the way.
+  p
+    | revers proxy server is used to hide all the mess the developer has
+    | made behind a single ip.
+  p
+    | lets start with a normal server, you take a domain name like
+    | &quot;www.example.com&quot; and point it to an ip, hopefully the ip of your
+    | server and whenever someone searches your domain name in a browser
+    | or by any other way that goes to the port 80 or 443 of your server
+    | based on http or https.
+  p
+    | things start to get out of hand when you use server name, like
+    | &quot;other.example.com&quot; and &quot;somethingelse.example.com&quot; or
+    | &quot;whatever.example.com&quot;. these nameservers come when you rent the
+    | domainname, and you can aim them to other servers or the same
+    | server.
+  p
+    | if you are anything like me you don&apos;t want to buy different servers
+    | for each and every project or nameserver. what you can do instead is
+    | serve your content on different ports on the same server and tell
+    | nginx to to set nameservers to ports on localhost of that machine.
+  p
+    | and to set these thing up you need to ssh into the server and edit
+    | the unreadable nginx config. thats is why i made nrps, after setting
+    | up nrps you get a front-end webapp on which you can view or edit the
+    | nginx config with easy input menues and stuff.
+  .col-sm-12.col-md-3.col-lg-3
+    .github-card(data-github='abhishek-deshmukh/nrps' data-width='400' data-height='155' data-theme='default')
+    script(src='../js/github-cards.js')
+  .row
+    .col-sm-12.col-md-8.col-lg-8
+      h2 pre-requisites
+      p
+        | you should be on an unix based system, meaning a mac or some
+        | distribution of linux.
+      p windows does not work yet.
+      p
+        | you can find out how to install these on the internet.
+      ul
+        li
+          a(href='https://nodejs.org' style='color: red;') node.js
+        li ssh
+        li any text editor
+      h2 setting up nrps
+      p
+        | there are two parts to it the backend(flask) and the frontend(vue).
+        | because of all the passwords and lack of developers still to deal
+        | with them, you have to go in and put in a few things by hand, but
+        | dont worry i will share each and every step here so hang tight.
+      p
+        | first lets get all the file we need on a local machine. there are 2
+        | ways to do this. if you have git installed(which you should) just do
+        br
+        span.code
+          | git clone
+          | https://github.com/abhishek-deshmukh/nrps/tree/v0.2.0
+        br
+        |             or if you don&apos;t have git, then you can download it form
+        a(href='https://github.com/abhishek-deshmukh/nrps/tree/v0.2.0') here
+      p you should have a directory structure like this:
+      .code.dir
+        | .
+        br
+        |             &boxvr;&boxh;&boxh; backend
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; api.py
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; main.conf
+        br
+        |             &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; requirements.txt
+        br
+        |             &boxvr;&boxh;&boxh; dir.txt
+        br
+        |             &boxvr;&boxh;&boxh; frontend
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; babel.config.js
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; package.json
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; package-lock.json
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; public
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; favicon.ico
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; index.html
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; readme.md
+        br
+        |             &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; src
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; app.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; assets
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; logo.png
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; components
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; helloworld.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; login.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; proxy.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; main.ts
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; plugins
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; bootstrap-vue.js
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; router
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; index.ts
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; shims-tsx.d.ts
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; shims-vue.d.ts
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; store
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; index.ts
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; views
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxvr;&boxh;&boxh; about.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; home.vue
+        br
+        |             &boxv;&nbsp;&nbsp; &boxur;&boxh;&boxh; tsconfig.json
+        br
+        |             &boxur;&boxh;&boxh; readme.md
+        br
+      p
+        | yes it might look overwhelming but don&apos;t worry you only have do a
+        | few things to get this working.
+      p
+        | now open the file
+        span.code backend/api.py
+        |  in your favourite
+        |             text-editor(vim). on lines 11 and 12 enter username and password
+        |             inside the quotes like so.
+      .code.dir
+        | 10|# enter things here
+        br
+        |             11|username = &quot;dunce&quot;
+        br
+        |             12|password = &quot;somethinglonganddifficult&quot;
+        br
+        |             13|# enter things here
+        br
+      p
+        | okay now the backend should has all the things inside it ready.
+      p
+        | lets set up a few things inside the frontend now shall we? open the
+        | file
+        br
+        span.code frontend/src/store/index.ts
+        br
+        |             again in your favorite text editor(vim) and look for
+        br
+        span.code rootip
+        br
+        |             and put in the ip of your remote server in quotes provided and then
+        |             just below that put in a name for the server in quotes
+      p
+        | now go to the base directory, and run
+      .code
+        | $ ./build.sh
+      p
+        | if you get a security issue run
+        span.code chown +x build.sh
+        |  and then try again.
+      p
+        | the setup is complete, and in the build files are in the folder
+        | called build, if you know how to move them to the server do that and
+        | skip this part, and if you don&apos;t then read along, now lets move
+        | these things to your server.
+      h2 moving to the server
+      p
+        | assuming you are a user on the server and you have the password for
+        | the user, we can &grave;scp&grave; the files into the server, &grave;scp&grave; is used to
+        | send files over ssh.
+      p
+        | now go to the base directory and run
+      .code
+        | $ scp -r build/ user@ipaddress:~
+      p
+        | in the above command replace
+        span.code user
+        |  with you
+        |             username on the server and the
+        span.code ipaddress
+        |  with the ipaddress of your
+        |             server.
+      p
+        | when you run it will prompt you for the password of the user on the
+        | remote server, i would recommend giving it that.
+      p
+        | now that the build files have been moved to the server lets deploy
+        | it on the server on part at a time
+      p now to connect to the server we will use ssh
+      .code
+        | $ ssh user@ipaddress
+      p
+        | after which it will ask for the password of the user on the server,
+        | i would recommend you give it that.
+      h2 pre-requisites part 2
+      p these are things to be installed on the server.
+      p
+        | most servers run ubuntu so, i am giving installation commands for
+        | ubuntu but all these packages should be in the package managers of
+        | your distribution.
+      .code
+        | $ sudo apt update &amp;&amp; sudo apt upgrade &amp;&amp; sudo apt install nginx
+        | supervisor python3 python3-pip &amp;&amp; pip3 install virtualenv
+      p
+        | these were installed on the server:
+      ul
+        li python3
+        li python3-pip
+        li virtualenv
+      p
+        | once these things are installed lets move on to deploying the
+        | backend.
+      h2 deploying
+      p lets begin by getting sudo access
+      .code $ sudo su
+      p
+        | this will prompt you for a password of the user on the server, put
+        | that in and your prompt should change to something like
+        span.code root@something #
+      p now go into the build/ folder and run
+      .code
+        | # ./install.sh example.com ipaddress
+      p
+        | replace ip-address with the ip of your remote server and example.com
+        | with domain name you want nrps hosted at.
+      p
+        | if you run into any permission issues run:
+      .code
+        | # chmod +x install.sh
+      p
+        | the deployment is complete.
+      h2 f.a.q.
+      h4 how to install node and npm?
+      p
+        | you can visit
+        a(href='https://nodejs.org/en/download') nodejs.org
+        |  for details
+        |             on how to do that.
+      h4 not abel to login in at the webpage, what to do?
+      p
+        | there are a lot of possible things that could have gone wrong but
+        | usually it is the firewall just run:
+      .code
+        | $ sudo ufw allow 8081/http
+      p and everything should be working.
+      h4 can i use the reverse proxy for other servers as well?
+      p
+        | yes, if the other server has https instead of http in its url, then
+        | put http in place of location, the browser will switch to https on
+        | its own.
+      h4 how to change nrps username and password?
+      p
+        | edit the username and password in
+        span.code /etc/nginx/nrps/api.py
+        |  and then you will
+        |             have to restart supervisorctl for the new code to take action, to do
+        |             that the run:
+      .code $ sudo supervisorctl restart nginx:nrps
+      p
+        | if you run into any issues
+        a(href='mailto:deshmukhabhishek369@gmail.com') e-mail
+        |  me, i
+        |             would love to help you out.

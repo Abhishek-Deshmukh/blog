@@ -1,7 +1,7 @@
 {
-  "name": "gulp4-pug-scss-ts-template",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "Template for static website generation",
+  "description": "Just my blog",
   "dependencies": {
     "browser-sync": "^2.26.7",
     "fs": "^0.0.1-security",
@@ -37,14 +37,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abhishek-deshmukh/gulp4-pug-scss-ts-template.git"
+    "url": "git+https://github.com/abhishek-deshmukh/blog.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abhishek-deshmukh/gulp4-pug-scss-ts-template/issues"
+    "url": "https://github.com/abhishek-deshmukh/blog/issues"
   },
-  "homepage": "https://github.com/abhishek-deshmukh/gulp4-pug-scss-ts-template#readme",
+  "homepage": "https://github.com/abhishek-deshmukh/blog#readme",
   "browserslist": [
     "last 2 version"
   ]

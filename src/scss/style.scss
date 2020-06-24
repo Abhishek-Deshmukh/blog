@@ -1,16 +1,217 @@
 // normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
-@import "~normalize.css";
-@font-face{
+@import '~normalize.css';
+@font-face {
   font-family: 'Fira Sans';
   font-style: normal;
   font-weight: 400;
-  src: url(../static/fonts/FiraSans-Light.otf)
+  src: url(../static/fonts/FiraSans-Regular.otf);
 }
-
+@font-face {
+  font-family: 'Fira Code';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../static/fonts/FiraMono-Regular.otf);
+}
+html {
+  background: black;
+  color: white;
+  box-sizing: initial;
+  overflow-x: hidden;
+  font-family: 'Fira Code';
+}
 body {
-  font-family: 'Fira Sans'
+  font-family: 'Fira Code';
+  margin: 0px;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+p {
+  line-height: 21px;
+  a {
+    color: red;
+    text-decoration: none;
+  }
+}
+h2 {
+  margin-bottom: 0px;
+  margin-top: 40px;
+  ::after {
+    content: '⏎';
+  }
+}
+h3 {
+  margin-bottom: 0px;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0em;
+  font-style: normal;
+  ::after {
+    content: ':';
+  }
+}
+h4 {
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: 0.008em;
+  font-weight: 900;
+  font-style: normal;
+  color: burlywood;
+}
+img {
+  width: 100%;
+}
+.button {
+  border-radius: 5px;
+  padding: 12px;
+  background: #241524;
+  font-family: 'Fira Code';
+  font-size: 15px;
+  color: white;
+  border: 0;
+  line-height: 2.5em;
+}
+.row {
+  margin-right: 10px;
+}
+.post-card {
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right, white, black);
+  min-height: 90px;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 7px;
+}
+.post-heading {
+  background: -o-linear-gradient(
+    36.87deg,
+    #ffd33d 0,
+    #fb8532 19.02%,
+    #ea4a5a 37.19%,
+    #8a63d2 56.92%,
+    #2188ff 79.93%,
+    #34d058 100%
+  );
+  background: linear-gradient(
+    53.13deg,
+    #ffd33d 0,
+    #fb8532 19.02%,
+    #ea4a5a 37.19%,
+    #8a63d2 56.92%,
+    #2188ff 79.93%,
+    #34d058 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 25px;
+  line-height: 1.3;
+  letter-spacing: 0.081em;
+  font-weight: 500;
+}
+.post-text {
+  font-size: 19px;
+  line-height: 1.2;
+  letter-spacing: 0.069em;
+  font-weight: 200;
+  font-style: normal;
 
-.title {
-  text-align: center;
+  ::-moz-selection {
+    color: yellow;
+    background: #37aabd;
+  }
+  ::selection {
+    color: yellow;
+    background: #37aabd;
+  }
+}
+.header {
+  background: #241524;
+  min-height: 60vh;
+  border-radius: 0px 0px 150px 0px;
+  padding-top: 70px;
+  padding-left: 15px;
+  margin-bottom: 40px;
+}
+.heading-home {
+  font-size: 40px;
+  padding-bottom: 20px;
+}
+.heading {
+  font-size: 35px;
+  line-height: 1.3;
+  letter-spacing: 0.105em;
+  font-weight: 400;
+  background: -o-linear-gradient(
+    36.87deg,
+    #ffd33d 0,
+    #fb8532 19.02%,
+    #ea4a5a 37.19%,
+    #8a63d2 56.92%,
+    #2188ff 79.93%,
+    #34d058 100%
+  );
+  background: linear-gradient(
+    53.13deg,
+    #ffd33d 0,
+    #fb8532 19.02%,
+    #ea4a5a 37.19%,
+    #8a63d2 56.92%,
+    #2188ff 79.93%,
+    #34d058 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.date {
+  color: #757575;
+  letter-spacing: 0.057em;
+  line-height: 0;
+}
+.code {
+  border-radius: 3px;
+  margin-top: 15px;
+  max-width: 700px;
+  background: #222222;
+  color: #bbbbbb;
+  line-height: 2;
+  padding-left: 15px;
+}
+span.code {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.quote {
+  background: #262121;
+  border-left: 5px solid #31b03f;
+  padding-left: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.math img {
+  width: auto;
+  background: white;
+  padding: 2px 10px 2px 10px;
+  border-radius: 4px;
+}
+.imath img {
+  width: auto;
+  background: white;
+  border-radius: 4px;
+  padding: 2px;
+}
+tab {
+  display: inline-block;
+  margin-left: 40px;
+}
+.dir {
+  line-height: 1.4;
+}
+footer {
+  border-top: 1px solid white;
+  a {
+    color: green;
+  }
 }

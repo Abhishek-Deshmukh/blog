@@ -1,0 +1,31 @@
+extends include/_post_base.pug
+block title
+  title Test Post
+
+block append head
+  meta(name="description", content="Just my Blog")
+  meta(name="keywords", content="Blog, test post")
+
+block heading
+  |Test Post Heading
+block date
+  |9 May, 2020
+
+block append body
+  p The actual content of the post
+  div.code
+    |$ code
+  div.code
+    | $ code code code code code
+    br
+    | code code
+  p now just gonna put a few lorem ipsums here
+  p
+    |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+    |do eiusmod tempor incididunt ut labore et dolore magna
+    |aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    |ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    |Duis aute irure dolor in reprehenderit in voluptate velit
+    |esse cillum dolore eu fugiat nulla pariatur. Excepteur
+    |sint occaecat cupidatat non proident, sunt in culpa qui
+    |officia deserunt mollit anim id est laborum.

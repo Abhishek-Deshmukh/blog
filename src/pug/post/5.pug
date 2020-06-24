@@ -1,0 +1,75 @@
+extends include/_post_base.pug
+block title
+  title Converting Imaginary Integrals into real ones
+
+block append head
+  meta(name="description", content="Converting integrals into real ones")
+  meta(name="keywords", content="Math, Mathematics, Integrating, Complex, Imaginary, Integration")
+
+block heading
+  | Imaginary integrals => Real ones
+block date
+  | 9 May, 2020
+block body
+  p
+    | Okay it&apos;s 6 steps and if you do it enough times it wil be down to
+    | only 5 steps.
+  p
+    | Just so all of this actually makes sense, we will be using the
+    | following example:
+  .math
+    | f(z) = \frac{1}{z}
+  p
+    | Above equation is to be integrated along the circle
+    span.imath |z|=R
+    | , starting and finishing on the route.
+  p Before getting into the sateps lets make use we know the basics
+  h2 Basic Definition
+  p An imaginary number is conventionally denoted as
+  .math z = x + \iota y
+  p and a function is denoted as
+  p.imath f(z) = u(x, y) + \iota v(x, y)
+  p
+    | here &grave;u&grave; and &grave;v&grave; are functions of &grave;x&grave; and &grave;y&grave;, and that &grave;i&grave; thing is
+    | iota also known as root of -1.
+  h2 1) Path
+  p
+    | Write the path in terms of only one variable, conventionally &grave;t&grave;. So, here we can write &apos;z&apos; as:
+  .math
+    | z = R \cos t + \iota R \sin t
+  p from this we can directly compare and get &grave;x&grave; and &grave;y&grave;
+  p.math
+    | x = R \cos t
+  p.math
+    | y = R \sin t
+  p That was all step 1 was.
+  h2 2) Function to x y
+  p
+    | Now we will get function which is in terms of &apos;u&apos; and &apos;v&apos; into terms of &apos;x&apos; and &apos;y&apos;.
+  .math
+    | f(z) = \frac{1}{z}
+  .math
+    | f(z) = \frac{1}{x + \iota y}
+  .math
+    | f(z) = \frac{x-\iota y}{x^2 + y^2}
+  p From this we can take out values of &apos;u&apos; and &apos;v&apos; as
+  .math
+    | u = \frac{x}{x^2+y^2};v = -\frac{y}{x^2+y^2}
+  h2 3) uv to t
+  p
+    | At this step substitute the earlier values of &apos;u&apos; and &apos;v&apos; we have in terms of &apos;x&apos; and &apos;y&apos;, to have it in terms to &apos;t&apos;.
+  .math u = \frac{\cos t} {R}
+  .math v = -\frac{\sin t} {R}
+  |           We are almost done now.
+  h2 4) Piecing it all together
+  p Now plug them into this equation you can do the following.
+  .math
+    | \int{f(z)} = \int{u\frac{dx}{dt}dt} - \int{v\frac{dy}{dt}dt} + \iota\int{u\frac{dy}{dt}dt} +\iota\int{u\frac{dx}{dt}dt}
+  h2 5) Precaution
+  p In the very likely case you forget the equation:
+  p You can get it directly from this:
+  .math
+    | \int{f(z)dz} = \int{(u+\iota v)(dx + \iota dy)}
+  p
+    | Just multiply those two brackets in the L.H.S and you&apos;ll be at the equation above it in 2 lines.
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js")
