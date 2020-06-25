@@ -23,8 +23,10 @@ body {
   font-family: 'Fira Code';
   margin: 0px;
   height: 100%;
-  width: 100%;
   overflow-x:hidden;
+}
+.row {
+  width: 95vw;
 }
 a {
   color: inherit;
