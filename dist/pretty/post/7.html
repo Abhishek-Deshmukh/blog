@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>When JAM stack isn't enough</title>
+    <meta name="author" content="Abhishek Anil Deshmukh">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="">
+    <meta name="description" content="When JAM stack isn't enough, writing a coustom markdown compiler, PATS stack, Javascript.API.Markdown stack idsn't enought, try out Pug.API.Typescipt.SASS stack">
+    <meta name="keywords" content="JAM Stack, website, static, web page, PATS stack, Javascript, Typescript, SASS, pug, html, css">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container"><a class="material-icons heading-home" href="../index.html">home</a><br><span class="heading">When JAM Stack isn't enough</span><br>
+        <p class="date">25 June, 2020
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <p>
+            In the recent years JAM stack has really been going around with lots of
+            themes and extensions, and math and what not. Lets see what JAM stack
+            is all about
+          </p>
+          <h2>JAM Stack</h2>
+          <p>
+            JAM stack is " Javascript, API, Markdown" stack, its a process which has
+            amazing advantages of all sorts. In a JAM stack a developer writes the
+            content of the page in markdown, which is converted to html and it is
+            then enhanced with JS and other things.
+          </p>
+          <p>
+            JAM stack makes a lot of things simple for the content writers, so that
+            they can concentrate on writing content and not worry about styling
+            and html all the time.
+          </p>
+          <h2>Limitations of JAM Stack</h2>
+          <p>
+            When using a JAM Stack like jekyll, Nuxt etc... You can select between
+            themes and all these themes when combines with Markdown give a lot of
+            possibility, and the usual blogger (with linear text content)
+            with be content with it, and if that is all you are looking for
+            by all means this post isn't for you, go rock with your blog,
+            comes with limitations as to what you can do.
+          </p>
+          <p>
+            I cannot tell how many times I have though about writing my own Markdown
+            compiler and then backout of it and the written html directly to get to
+            the dead line.
+          </p>
+          <p>
+            The simple truth is, we all do not have the time to write a new compiler
+            for every project we start. That's why I choose PATS stack
+          </p>
+          <h2>PATS Stack</h2>
+          <p>
+            PATS Stack is, "Pug API Typescript SASS stack", Yeah i know terrible
+            name. But it give you the freedom needed to make something custom.
+          </p>
+          <p>In a JAM stack application you "cannot" do something like this:</p>
+          <div class="row">
+            <p class="col-5">
+              This is the left half
+              Bunch of text
+            </p>
+            <p class="col-5">
+              This is the right half
+              Bunch of text
+            </p>
+          </div>
+          <But>in a PATS stack this is as easy as</But>
+          <pre class="code dir">div.row
+  p.col-5
+    |This is the left half
+    |Bunch of text
+  p.col-5
+    |This is the right half
+    |Bunch of text</pre>
+          <p>
+            People with experience in bootstrap and pug will notice that this is
+            written in pug and uses bootstrap.
+          </p>
+          <p>
+            A PATS stack uses these technologies to make writing easier while also
+            not loosing control of the styling, A stack with advantages of a JAM stack
+            and flexibility you get when writing html and css.
+          </p>
+          <h2>Why PATS?</h2>
+          <p>
+            It has all the advantages of the the JAM stack, security, speed, lower cost
+            ,developer experience and in addition to that Flexibility.
+          </p>
+          <h2>Okay, I'm sold What now? Where do I start?</h2>
+          <h3>1. PUG</h3>
+          <p>Just how you wrote Markdown in a JAM stack we'll write pug in PATS</p>
+          <p>PUG is just a step above Markdown and a step below good old html5.</p>
+          <p>
+            If you have done even basic html you should be abel to get in pace with pug
+            in an evening or 2.
+          </p>
+          <h3>2. API</h3>
+          <p>You can talk with APIs just the way you did in JAM, nothing new here.</p>
+          <h3>3. Typescript</h3>
+          <p>
+            There no need to write Typescript, javascript also works, but didnt wanna
+            screwup the name so...
+          </p>
+          <p>Mostly to run other libraries already written.</p>
+          <h3>4. SCSS</h3>
+          <p>
+            Not necessary to learn, you can just write your good old css, and things
+            will be fine.
+          </p>
+          <h2>Philosophy</h2>
+          <p>
+            Just like JAM stack TAPS stack isn't about the technologies used, it's
+            about how it's written, meaning, you write a template and styling an other
+            nice things once for the whole html page, but when done with that, you can
+            concentrate on writing the main stuff, but at the same time you are not
+            stuck with that, whenever you want you can start using classes and other
+            fancy things that you made.
+          </p>
+          <h2>Okay, show me an example.</h2>
+          <p><a href="https://github.com/Abhishek-Deshmukh/blog/blob/develop/src/pug/post/6.pug" target="_blank">Here</a>
+            this is the source file for this blog post. That is all that i had to
+            In terms of redability it's as readable as Markdown
+            (Personal Opinion Alert!!!).
+          </p>
+          <p>
+            In all honesty there is also a
+            <span class="code">_post_base.pug</span>
+            which has some styling and things, but when writing this post I didn't
+            even think about the file till now, Point being it was written only once
+            and I've been happy ever since.
+          </p>
+          <h2>Cool now give me a Framework so I can start on this already</h2>
+          <p>
+            That's the catch, PATS stack is something I though about a while back
+            theres no official "Framework" for a PATS stack, yet.
+          </p>
+          <p>
+            But after stealing code from people (legally), I have come up with a node
+            app thingy in which you can start.
+          </p>
+          <div class="github-card" data-github="Abhishek-deshmukh/gulp4-pug-scss-ts-template" data-width="400" data-height="155" data-theme="default"></div>
+          <p>
+            If this gets attention I might work on making this into a full blown
+            Framework, which you could just npm install. So share this page ;)
+          </p>
+          <h2>Complete Example</h2>
+          <div class="github-card" data-github="Abhishek-deshmukh/blog" data-width="400" data-height="155" data-theme="default"></div>
+          <p>This uses the above mentioned repository.</p>
+        </div>
+      </div>
+    </div>
+    <script src="../js/latex.js"></script>
+    <script src="../js/github-cards.js"></script>
+    <script src="../js/main.js"></script>
+    <footer>
+      Made with love by
+      <a href="https://abhishek-deshmukh.ml" target="_blank">Abhishek Anil Deshmukh</a>
+    </footer>
+  </body>
+</html>

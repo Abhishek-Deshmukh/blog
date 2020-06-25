@@ -22,6 +22,9 @@ html {
 body {
   font-family: 'Fira Code';
   margin: 0px;
+  height: 100%;
+  width: 100%;
+  overflow-x:hidden;
 }
 a {
   color: inherit;
@@ -118,11 +121,11 @@ img {
   font-weight: 200;
   font-style: normal;
 
-  ::-moz-selection {
+  &:-moz-selection {
     color: yellow;
     background: #37aabd;
   }
-  ::selection {
+  &:selection {
     color: yellow;
     background: #37aabd;
   }

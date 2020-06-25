@@ -368,6 +368,9 @@ html {
 body {
   font-family: 'Fira Code';
   margin: 0px;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -462,12 +465,12 @@ img {
   font-style: normal;
 }
 
-.post-text ::-moz-selection {
+.post-text:-moz-selection {
   color: yellow;
   background: #37aabd;
 }
 
-.post-text ::selection {
+.post-text:selection {
   color: yellow;
   background: #37aabd;
 }
