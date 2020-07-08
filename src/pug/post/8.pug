@@ -1,0 +1,94 @@
+extends include/_post_base.pug
+block title
+  title Changing your IP address
+
+block append head
+  meta(name="description", content="Ways you can change your IP address, from mobile data to vpns")
+  meta(name="keywords", content="Changing, IP, IPv4, IPv6, mobile, data, privacy, vpn, openvpn")
+
+block heading
+  |Changing your IP address
+block date
+  |30 June, 2020
+
+block append body
+  h2 What is IP address?
+  p.
+    IP address is short for Internet Protocol address. It's an identifying number
+    for network hardware connected to a network. Having an IP address allows other
+    in the same IP network to communicate with one another
+
+  p.
+    Most ip address look like this
+  .code 192.168.1.1
+  p.
+    this is an ipv4 address, there are other kinds of software like ipv6 which looks
+    something like this
+  .code 4324.2465.3423::3424
+
+  h2 What is my current IP address?
+
+  p
+    |Just google
+    |
+    span.code my ip
+
+  h2 Why would you wanna change yours?
+  p.
+    It's usually to access things that your current IP address is not allowed to,
+    for valid or invalid reasons. (I mean who is to judge?)
+
+  h2 How do I change it?
+  p Here are 3 ways
+
+  h3 Phone data
+  p.
+    If you are connected to your wifi, turn on your phone's hotspot and if your phone's
+    ip address isn't blocked then your ip address will be the one unders your phone's
+    network, essentially allowing you to access what you wanted to.
+
+  h3 VPN
+  p
+    | Just in case the last one did not work due to some reason, you can always connect to
+    | a vpn, there are a lot of great free and paid vpn sources, and if you don't like any
+    | of those you can always set up your own vpn for a rather cheap price (I provide that
+    | as a service,
+    |
+    a(href="mailto:deshmukhabhishek369@gmail.com", target="_blank") contact me
+    |
+    | if you want a ready made private and secure vpn)
+
+  h3 Traditional
+  p the traditional way to do it.
+  h4 Windows
+  ol
+    li
+      |Open Control Panel and then select
+      |
+      span.code Network and Sharing Center
+    li
+      |On the left side select
+      |
+      span.code Change adapter setting
+    li
+      |This will list all the connections available, double click the connect which provides
+      |Most probably your wifi, or ethernet. A small window will open up
+    li
+      |Select
+      |
+      span.code Properties
+      |
+      |On bottom left
+    li
+      |Double click on
+      |
+      span.code Internet Protocol Version 4(TCP. IPv4)
+      |
+      |That will open yet another window
+    li
+      |Here you can decide your IP address, with in range that is.
+  h4 Linux
+  p Doing this on linux has more to it than I would like to discuss here, so
+    |
+    |
+    a(href="https://www.howtogeek.com/118337/stupid-geek-tricks-change-your-ip-address-from-the-command-line-in-linux/") see this
