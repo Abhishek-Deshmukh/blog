@@ -8,7 +8,7 @@ html(lang="en")
     meta(name="author", content="Abhishek Anil Deshmukh")
     meta(name="viewport", content="width=device-width, initial-scale=1")
 
-    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons", async)
     link(rel="stylesheet", href="../css/bootstrap-grid.min.css")
     link(rel="stylesheet", href="../css/style.css")
     //- [if lt IE 9]
@@ -23,7 +23,7 @@ html(lang="en")
       div.container
         a(href="../index.html").material-icons.heading-home home
         br
-        span.heading
+        h1.heading
           block heading
         br
         p.date
@@ -33,12 +33,12 @@ html(lang="en")
         div.col-sm-12.col-md-9.col-lg-9
           block body
 
-        link(href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet')
+        link(href='https://fonts.googleapis.com/css?family=Cookie', rel='stylesheet', async)
         a.bmc-button(target='_blank' href='https://www.buymeacoffee.com/dunce07')
-          img(src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg' alt='Buy me a coffee')
+          img(src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg' alt='Buy me a coffee', async)
           span(style='margin-left:5px;font-size:28px !important;') Buy me a coffee
     script(src="../js/latex.js")
-    script(src="../js/github-cards.js")
+    script(src="../js/github-cards.js", async)
     script(src="../js/main.js")
     footer
       | Made with love by
