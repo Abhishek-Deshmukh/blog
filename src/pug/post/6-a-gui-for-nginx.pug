@@ -12,36 +12,36 @@ block date
   | 2 June, 2020
 block body
   p
-    | i recently rented a new server from ovh cloud, they are super cheap
+    | I recently rented a new server from OVH cloud, they are super cheap
     | check them out.
   p
-    | no, they do not sponsor me.
+    | NO, they do not sponsor me.
   p
-    | getting your hand into nginx without any prior knowledge about
+    | Getting your hand into nginx without any prior knowledge about
     | servers and reverse proxies and all those fancy terms, can be
     | difficult
   p
-    | although it is important that to learn all of them, sometimes you
+    | Although it is important that to learn all of them, sometimes you
     | just want it working and quickly.
-  h2 reverse proxy
-  p first lets get the concept out of the way.
+  h2 Reverse proxy
+  p First lets get the concept out of the way.
   p
-    | revers proxy server is used to hide all the mess the developer has
+    | Reverse proxy server is used to hide all the mess the developer has
     | made behind a single ip.
   p
-    | lets start with a normal server, you take a domain name like
+    | Lets start with a normal server, you take a domain name like
     | &quot;www.example.com&quot; and point it to an ip, hopefully the ip of your
     | server and whenever someone searches your domain name in a browser
     | or by any other way that goes to the port 80 or 443 of your server
     | based on http or https.
   p
-    | things start to get out of hand when you use server name, like
+    | Things start to get out of hand when you use server name, like
     | &quot;other.example.com&quot; and &quot;somethingelse.example.com&quot; or
     | &quot;whatever.example.com&quot;. these nameservers come when you rent the
     | domainname, and you can aim them to other servers or the same
     | server.
   p
-    | if you are anything like me you don&apos;t want to buy different servers
+    | If you are anything like me you don&apos;t want to buy different servers
     | for each and every project or nameserver. what you can do instead is
     | serve your content on different ports on the same server and tell
     | nginx to to set nameservers to ports on localhost of that machine.
@@ -57,33 +57,34 @@ block body
     .col-sm-12.col-md-8.col-lg-8
       h2 pre-requisites
       p
-        | you should be on an unix based system, meaning a mac or some
+        | You should be on an unix based system, meaning a mac or some
         | distribution of linux.
       p windows does not work yet.
       p
-        | you can find out how to install these on the internet.
+        | You can find out how to install these on the internet.
       ul
         li
           a(href='https://nodejs.org' style='color: red;') node.js
-        li ssh
+        li SSH
         li any text editor
-      h2 setting up nrps
+      h2 Setting up NRPS
       p
-        | there are two parts to it the backend(flask) and the frontend(vue).
+        | There are two parts to it the backend(flask) and the frontend(vue).
         | because of all the passwords and lack of developers still to deal
         | with them, you have to go in and put in a few things by hand, but
-        | dont worry i will share each and every step here so hang tight.
+        | don't worry i will share each and every step here so hang tight.
       p
-        | first lets get all the file we need on a local machine. there are 2
+        | First lets get all the file we need on a local machine. there are 2
         | ways to do this. if you have git installed(which you should) just do
         br
         span.code
           | git clone
-          | https://github.com/abhishek-deshmukh/nrps/tree/v0.2.0
+          | https://github.com/abhishek-deshmukh/nrps/tree/v0.3.0
         br
         |             or if you don&apos;t have git, then you can download it form
-        a(href='https://github.com/abhishek-deshmukh/nrps/tree/v0.2.0') here
-      p you should have a directory structure like this:
+        |
+        a(href='https://github.com/abhishek-deshmukh/nrps/tree/v0.3.0') here
+      p You will have a directory structure like this:
       .code.dir
         | .
         br
@@ -158,67 +159,75 @@ block body
         |             &boxur;&boxh;&boxh; readme.md
         br
       p
-        | yes it might look overwhelming but don&apos;t worry you only have do a
+        | Yes, it might look overwhelming but don&apos;t worry you only have do a
         | few things to get this working.
       p
-        | now open the file
+        | Now open the file
         span.code backend/api.py
         |  in your favourite
-        |             text-editor(vim). on lines 11 and 12 enter username and password
-        |             inside the quotes like so.
+        |  text-editor(vim). on lines 11 and 12 enter username and password
+        |  inside the quotes like so.
       .code.dir
         | 10|# enter things here
         br
-        |             11|username = &quot;dunce&quot;
+        |  11|username = &quot;dunce&quot;
         br
-        |             12|password = &quot;somethinglonganddifficult&quot;
+        |  12|password = &quot;somethinglonganddifficult&quot;
         br
-        |             13|# enter things here
+        |  13|# enter things here
         br
       p
         | okay now the backend should has all the things inside it ready.
       p
         | lets set up a few things inside the frontend now shall we? open the
         | file
-        br
+        |
         span.code frontend/src/store/index.ts
-        br
-        |             again in your favorite text editor(vim) and look for
-        br
-        span.code rootip
-        br
-        |             and put in the ip of your remote server in quotes provided and then
-        |             just below that put in a name for the server in quotes
+        |
+        | again in your favorite text editor(vim) and look for
+        |
+        span.code rootURL
+        |
+        | and put in the domain name of your remote server in quotes provided and then
+        | just below that put in a name for the
+        |
+        span.code server
+        |
+        | in quotes
       p
         | now go to the base directory, and run
       .code
         | $ ./build.sh
       p
-        | if you get a security issue run
+        | If you get a security issue, run
+        |
         span.code chown +x build.sh
+        |
         |  and then try again.
       p
-        | the setup is complete, and in the build files are in the folder
+        | The setup is complete, and in the build files are in the folder
         | called build, if you know how to move them to the server do that and
         | skip this part, and if you don&apos;t then read along, now lets move
         | these things to your server.
-      h2 moving to the server
+      h2 Moving to the SERVER
       p
-        | assuming you are a user on the server and you have the password for
+        | Assuming you are a user on the server and you have the password for
         | the user, we can &grave;scp&grave; the files into the server, &grave;scp&grave; is used to
         | send files over ssh.
       p
-        | now go to the base directory and run
+        | Now go to the base directory and run
       .code
         | $ scp -r build/ user@ipaddress:~
       p
         | in the above command replace
+        |
         span.code user
-        |  with you
-        |             username on the server and the
+        |
+        |  with your username on the server and the
+        |
         span.code ipaddress
-        |  with the ipaddress of your
-        |             server.
+        |
+        |  with the ipaddress of your server.
       p
         | when you run it will prompt you for the password of the user on the
         | remote server, i would recommend giving it that.
@@ -232,62 +241,66 @@ block body
         | after which it will ask for the password of the user on the server,
         | i would recommend you give it that.
       h2 pre-requisites part 2
-      p these are things to be installed on the server.
+      p These are things to be installed on the server.
       p
-        | most servers run ubuntu so, i am giving installation commands for
-        | ubuntu but all these packages should be in the package managers of
-        | your distribution.
+        | Most servers run UBUNTU so, here is the installation command for
+        | ubuntu, if you are not on ubuntu don't worry all these packages
+        | should be in the package managers of your distribution.
       .code
         | $ sudo apt update &amp;&amp; sudo apt upgrade &amp;&amp; sudo apt install nginx
-        | supervisor python3 python3-pip &amp;&amp; pip3 install virtualenv
+        | supervisor python3 python3-pip software-properties-common &amp;&amp; pip3
+        | install virtualenv python3-certbot-nginx &amp;&amp; sudo apt-add-repository universe
+        | &amp;&amp; sudo apt-get update &amp;&amp; sudo apt-get install certbot python3-certbot-nginx
       p
         | these were installed on the server:
       ul
         li python3
         li python3-pip
         li virtualenv
+        li certbot
+        li python3-certbot-nginx
       p
         | once these things are installed lets move on to deploying the
         | backend.
-      h2 deploying
-      p lets begin by getting sudo access
+      h2 Deploying
+      p Lets begin by getting sudo access
       .code $ sudo su
       p
-        | this will prompt you for a password of the user on the server, put
-        | that in and your prompt should change to something like
+        | This will prompt you for a password of the user on the server, put
+        | that in and your prompt should change to something like:
         span.code root@something #
       p now go into the build/ folder and run
       .code
         | # ./install.sh example.com ipaddress
       p
-        | replace ip-address with the ip of your remote server and example.com
+        | Replace ip-address with the ip of your remote server and example.com
         | with domain name you want nrps hosted at.
       p
-        | if you run into any permission issues run:
+        | If you run into any permission issues run:
       .code
         | # chmod +x install.sh
       p
         | the deployment is complete.
-      h2 f.a.q.
-      h4 how to install node and npm?
+      h2 F.A.Q.
+      h4 How to install node and npm?
       p
         | you can visit
         a(href='https://nodejs.org/en/download') nodejs.org
         |  for details
         |             on how to do that.
-      h4 not abel to login in at the webpage, what to do?
+      h4 Not abel to login in at the webpage, what to do?
       p
         | there are a lot of possible things that could have gone wrong but
         | usually it is the firewall just run:
       .code
         | $ sudo ufw allow 8081/http
       p and everything should be working.
-      h4 can i use the reverse proxy for other servers as well?
+      h4 Can I use the reverse proxy for other servers as well?
       p
         | yes, if the other server has https instead of http in its url, then
         | put http in place of location, the browser will switch to https on
         | its own.
-      h4 how to change nrps username and password?
+      h4 How to change NRPS username and password?
       p
         | edit the username and password in
         span.code /etc/nginx/nrps/api.py
