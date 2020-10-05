@@ -20,7 +20,7 @@ html(lang="en")
     block head
   body
     div.header
-      div.container
+      div.container-fluid
         a(href="../index.html")
           svg.bi.bi-house-fill(width='2em' height='2em' viewbox='0 0 16 16' fill='currentColor' xmlns='http://www.w3.org/2000/svg')
             path(fill-rule='evenodd' d='M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z')
@@ -36,10 +36,11 @@ html(lang="en")
         div.col-sm-12.col-md-9.col-lg-9
           block body
 
-        link(href='https://fonts.googleapis.com/css?family=Cookie', rel='stylesheet', async)
-        a.bmc-button(target='_blank' href='https://www.buymeacoffee.com/dunce07')
-          img(src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg' alt='Buy me a coffee', async)
-          span(style='margin-left:5px;font-size:28px !important;') Buy me a coffee
+        div.col-sm-12.col-md-3.col-lg-3
+          link(href='https://fonts.googleapis.com/css?family=Cookie', rel='stylesheet', async)
+          a.bmc-button(target='_blank' href='https://www.buymeacoffee.com/dunce07')
+            img(src='https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg' alt='Buy me a coffee', async)
+            span(style='margin-left:5px;font-size:28px !important;') Buy me a coffee
     script(src="../js/latex.js")
     script(src="../js/github-cards.js", async)
     script(src="../js/main.js")
