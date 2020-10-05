@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>Citation Cartel - An unsuccessful ambush</title>
+    <meta name="author" content="Abhishek Anil Deshmukh">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" async>
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="">
+    <meta name="description" content="Self-citation is the unethical craft of citing papers written by the authors themselves, for a false increase in citation-count and therefore citation score.">
+    <meta name="keywords" content="Citation, Self-citation, Cartel, ethics, analytics">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container"><a href="../index.html">
+          <svg class="bi bi-house-fill" width="2em" height="2em" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+          </svg></a><br>
+        <h1 class="heading">Citation Cartel - An unsuccessful ambush
+        </h1><br>
+        <p class="date">05 Oct, 2020
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <p>Authors:<a href="https://abhishek-deshmukh.ml">Mr.Abhishek Anil Deshmukh</a>,
+            <a href="https://www.niser.ac.in/~smishra/index.html">Dr.Subhankar Mishra</a>
+          </p>
+          <p>Self-citation is the unethical craft of citing papers written by the authors themselves, for a false increase in citation-count and therefore citation score.</p>
+          <p>
+            At the end of July 2020, Dr. Subhankar Mishra sent me a
+            <a href="https://www.nature.com/articles/d41586-019-02479-7">Nature Article</a>
+            by Richard Van Noorden & Dalmeet Singh Chawla about extreme self-citing scientists. It was a study to look for academic professionals who were increasing their citation counts by self-citing their papers or getting their co-authors to do the same.
+          </p>
+          <p>After that, we started looking for data to find the “self-citation score” of researchers in general.</p>
+          <p>
+            We started with
+            <a href="https://dblp.org/">DBLP</a><sup>[<a href="#ref-1">1</a>].</sup>
+          </p>
+          <blockquote>“The dblp computer science bibliography provides open bibliographic information on major computer science journals and proceedings. Originally created at the University of Trier in 1993, dblp is now operated and further developed by Schloss Dagstuhl.” -DBLP website</blockquote>
+          <p>Fortunately, the dblp website provided a way to download their database, unfortunately, the data was a 2.8GB XML file. As cool as the dblp team is, they provided a java “library” to parse the XML for data analysis. But, it was too slow for our analysis to be run in a reasonable amount of time.</p>
+          <p>
+            To overcome this problem, I wrote a
+            <a href="https://github.com/smlab-niser/selfcitation">python script</a><sup>[<a href="#ref-2">2</a>].</sup>
+            to parse the XML and move the data into a
+            
+            <a href="https://www.postgresql.org/">Postgres</a><sup>[<a href="#ref-3">3</a>].</sup>
+            database, which once indexed would be faster by orders to query than the XML. Before starting the analysis, to test if all the data was parsed correctly. We ran queries for some citation data we already knew, and we found out a substantial amount of citations were missing. It had nearly all the publications available, but their citation data was missing, which was what this study was about. Later on, it was found that the XML did not have that data.
+          </p>
+          <p>
+            We set out to find other sources of data like
+            <a href="https://orcid.org/">Orcid</a><sup>[<a href="#ref-3">3</a>].</sup>,
+            <a href="http://www.scopus.com">Scopus</a><sup>[<a href="#ref-4">4</a>].</sup>,
+            unfortunately, they did not include the citation data we needed.
+            
+            <a href="https://scholar.google.com/">Google Scholar</a><sup>[<a href="#ref-5">5</a>].</sup>
+            had the data but did not provide an API (between us, I tried scraping. Spoiler alert, that did not work),
+            
+            <a href="https://academic.microsoft.com/home">Microsoft Academic’s</a><sup>[<a href="#ref-6">6</a>].</sup>
+            API had time-based call restrictions, which if adhered to would cause the analysis to take an unreasonable amount of time.
+            <table>
+              <thead>
+                <tr>
+                  <th>Source</th>
+                  <th>Why it didn't work?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DBLP</td>
+                  <td>Lack of Citation Data</td>
+                </tr>
+                <tr>
+                  <td>Orcid</td>
+                  <td>Lack of Citation data for public</td>
+                </tr>
+                <tr>
+                  <td>Scopus</td>
+                  <td>Lack of Citation data</td>
+                </tr>
+                <tr>
+                  <td>Google Scholar</td>
+                  <td>No publicly available API</td>
+                </tr>
+                <tr>
+                  <td>Microsoft Academic</td>
+                  <td>API restrictions were too hard for the project</td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+          <h2>Conclusion</h2>
+          <p>Now onto the real conclusion, There were no freely available sources of citation data, which would allow a large scale analysis. This is unfortunate as self-citation is an unethical practice. Such an analysis would have led us to find correlations between the environment or other factors and increase in self-citation practices, further leading us to avoid creating an environment or atmosphere which promotes or enables self-citation.</p>
+          <h2>References</h2>
+          <ol>
+            <li id="ref-1">
+              <cite>
+                "dblp: computer science bibliography."
+                <a href="https://dblp.org/">https://dblp.org/</a>.
+                Accessed 25 Aug. 2020.
+              </cite>
+            </li>
+            <li id="ref-2">
+              <cite>
+                "The parser script"
+                <a href="https://github.com/smlab-niser/selfcitation">https://github.com/smlab-niser/selfcitation</a>.
+                Accessed 25 Aug 2020.
+              </cite>
+            </li>
+            <li id="ref-3">
+              <cite>
+                "ORCID."
+                <a href="https://orcid.org/">https://orcid.org/</a>.
+                Accessed 25 Aug. 2020.
+              </cite>
+            </li>
+            <li id="ref-4">
+              <cite>
+                "Search for an author profile - Scopus."
+                <a href="https://www.scopus.com">https://www.scopus.com</a>.
+                Accessed 25 Aug. 2020.
+              </cite>
+            </li>
+            <li id="ref-5">
+              <cite>
+                "Google Scholar."
+                <a href="https://scholar.google.com/">https://scholar.google.com/</a>.
+                Accessed 25 Aug. 2020
+              </cite>
+            </li>
+            <li id="ref-6">
+              <cite>
+                "Microsoft Academic - Microsoft Research." 22 Feb. 2016,
+                <a href="https://www.microsoft.com/en-us/research/project/academic/">https://www.microsoft.com/en-us/research/project/academic/</a>.
+                Accessed 25 Aug. 2020.
+              </cite>
+            </li>
+          </ol>
+        </div>
+        <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" async><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/dunce07"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" async><span style="margin-left:5px;font-size:28px !important;">Buy me a coffee</span></a>
+      </div>
+    </div>
+    <script src="../js/latex.js"></script>
+    <script src="../js/github-cards.js" async></script>
+    <script src="../js/main.js"></script>
+    <footer>
+      Made with love by
+      <a href="https://abhishek-deshmukh.ml" target="_blank">Abhishek Anil Deshmukh</a>
+    </footer>
+  </body>
+</html>

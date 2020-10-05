@@ -1,0 +1,168 @@
+extends include/_post_base
+
+block title
+  title Citation Cartel - An unsuccessful ambush
+
+
+block append head
+  meta(name="description", content="Self-citation is the unethical craft of citing papers written by the authors themselves, for a false increase in citation-count and therefore citation score.")
+  meta(name="keywords", content="Citation, Self-citation, Cartel, ethics, analytics")
+
+block heading
+  |Citation Cartel - An unsuccessful ambush
+block date
+  |05 Oct, 2020
+
+
+block append body
+  p Authors:
+    a(href="https://abhishek-deshmukh.ml") Mr.Abhishek Anil Deshmukh
+    |,
+    |
+    a(href="https://www.niser.ac.in/~smishra/index.html") Dr.Subhankar Mishra
+  p Self-citation is the unethical craft of citing papers written by the authors themselves, for a false increase in citation-count and therefore citation score.
+
+  p At the end of July 2020, Dr. Subhankar Mishra sent me a
+    |
+    |
+    a(href="https://www.nature.com/articles/d41586-019-02479-7") Nature Article
+    |
+    |by Richard Van Noorden & Dalmeet Singh Chawla about extreme self-citing scientists. It was a study to look for academic professionals who were increasing their citation counts by self-citing their papers or getting their co-authors to do the same.
+
+  p After that, we started looking for data to find the “self-citation score” of researchers in general.
+
+  p We started with
+    |
+    |
+    a(href="https://dblp.org/") DBLP
+    |
+    sup [
+      a(href="#ref-1") 1
+      |].
+
+  blockquote “The dblp computer science bibliography provides open bibliographic information on major computer science journals and proceedings. Originally created at the University of Trier in 1993, dblp is now operated and further developed by Schloss Dagstuhl.” -DBLP website
+
+  p Fortunately, the dblp website provided a way to download their database, unfortunately, the data was a 2.8GB XML file. As cool as the dblp team is, they provided a java “library” to parse the XML for data analysis. But, it was too slow for our analysis to be run in a reasonable amount of time.
+  p To overcome this problem, I wrote a
+    |
+    |
+    a(href="https://github.com/smlab-niser/selfcitation") python script
+    |
+    sup [
+      a(href="#ref-2") 2
+      |].
+    |
+    |to parse the XML and move the data into a
+    |
+    |
+    a(href="https://www.postgresql.org/") Postgres
+    |
+    sup [
+      a(href="#ref-3") 3
+      |].
+    |
+    |database, which once indexed would be faster by orders to query than the XML. Before starting the analysis, to test if all the data was parsed correctly. We ran queries for some citation data we already knew, and we found out a substantial amount of citations were missing. It had nearly all the publications available, but their citation data was missing, which was what this study was about. Later on, it was found that the XML did not have that data.
+
+  p We set out to find other sources of data like
+    |
+    |
+    a(href="https://orcid.org/") Orcid
+    |
+    sup [
+      a(href="#ref-3") 3
+      |].
+    |,
+    |
+    a(href="http://www.scopus.com") Scopus
+    |
+    sup [
+      a(href="#ref-4") 4
+      |].
+    |,
+    |unfortunately, they did not include the citation data we needed.
+    |
+    |
+    a(href="https://scholar.google.com/") Google Scholar
+    |
+    sup [
+      a(href="#ref-5") 5
+      |].
+    |
+    |had the data but did not provide an API (between us, I tried scraping. Spoiler alert, that did not work),
+    |
+    |
+    a(href="https://academic.microsoft.com/home") Microsoft Academic’s
+    |
+    sup [
+      a(href="#ref-6") 6
+      |].
+    |
+    |API had time-based call restrictions, which if adhered to would cause the analysis to take an unreasonable amount of time.
+
+    table
+      thead
+        tr
+          th Source
+          th Why it didn't work?
+      tbody
+        tr
+          td DBLP
+          td Lack of Citation Data
+        tr
+          td Orcid
+          td Lack of Citation data for public
+        tr
+          td Scopus
+          td Lack of Citation data
+        tr
+          td Google Scholar
+          td No publicly available API
+        tr
+          td Microsoft Academic
+          td API restrictions were too hard for the project
+  h2 Conclusion
+  p Now onto the real conclusion, There were no freely available sources of citation data, which would allow a large scale analysis. This is unfortunate as self-citation is an unethical practice. Such an analysis would have led us to find correlations between the environment or other factors and increase in self-citation practices, further leading us to avoid creating an environment or atmosphere which promotes or enables self-citation.
+  h2 References
+  ol
+    li#ref-1
+      cite "dblp: computer science bibliography."
+        |
+        |
+        a(href="https://dblp.org/") https://dblp.org/
+        |.
+        |Accessed 25 Aug. 2020.
+    li#ref-2
+      cite "The parser script"
+        |
+        |
+        a(href="https://github.com/smlab-niser/selfcitation") https://github.com/smlab-niser/selfcitation
+        |.
+        |Accessed 25 Aug 2020.
+    li#ref-3
+      cite "ORCID."
+        |
+        |
+        a(href="https://orcid.org/") https://orcid.org/
+        |.
+        |Accessed 25 Aug. 2020.
+    li#ref-4
+      cite "Search for an author profile - Scopus."
+        |
+        |
+        a(href="https://www.scopus.com") https://www.scopus.com
+        |.
+        |Accessed 25 Aug. 2020.
+    li#ref-5
+      cite "Google Scholar."
+        |
+        |
+        a(href="https://scholar.google.com/") https://scholar.google.com/
+        |.
+        |Accessed 25 Aug. 2020
+    li#ref-6
+      cite "Microsoft Academic - Microsoft Research." 22 Feb. 2016,
+        |
+        |
+        a(href="https://www.microsoft.com/en-us/research/project/academic/") https://www.microsoft.com/en-us/research/project/academic/
+        |.
+        |Accessed 25 Aug. 2020.
