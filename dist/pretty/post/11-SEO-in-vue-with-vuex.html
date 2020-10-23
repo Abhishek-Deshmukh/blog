@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <title>SEO in vue with vuex</title>
+    <meta name="author" content="Abhishek Anil Deshmukh">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" async>
+    <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-165302202-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-165302202-2');
+    </script>
+    <link rel="shortcut icon" href="">
+    <meta name="description" content="onpage SEO in Javascript frontend frameworks like vue, react and angular can be pretty tricky and sometimes down right infuriating, here are some tricks and tips I have collected over the projects which seem to work">
+    <meta name="keywords" content="SEO, vue, vuex, Javascript, state management, eta tags, vuejs">
+  </head>
+  <body>
+    <div class="header">
+      <div class="container-fluid"><a href="../index.html">
+          <svg class="bi bi-house-fill" width="2em" height="2em" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"></path>
+          </svg></a><br>
+        <h1 class="heading">SEO in vue with vuex
+        </h1><br>
+        <p class="date">24 Oct, 2020
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-9">
+          <p>Following this post requires some experience with vuex.</p>
+          <h2>SEO</h2>
+          <p>
+            By onpage SEO I mean the meta tags on the top of the page, as you might
+            know vue/react/angular all load the html after the page has opened in a
+            browser and javascript is run, but not all webcrawlers all adept enough
+            to do this and rank your correctly.
+          </p>
+          <p>
+            To over come this problem, the "popular" opinion you will hear on the
+            internet is prerendering your page, meaning you run a part of the
+            javascript in the build time to have considerable amount of html
+            already loaded, which works. This can be done with Vue-press or Nuxt
+            and if you are a react fan then with Gatsby. But lets say for whatever
+            reason you cannot do that, maybe you don't have time to learn, maybe the
+            deadline is too close and this is first time you learnt about SEO.
+          </p>
+          <p>
+            Whatever the reason maybe if you have a vue app ready with vuex then,
+            This is a set of dirty tricks which can get your SEO game up.
+          </p>
+          <h2>Pre-rendering (Not what you think)</h2>
+          <p>
+            Yeah, yeah, I know you don't have time to learn Vue-press or Nuxt, turns
+            out you can kinda do that without them, yes I mean manually.
+          </p>
+          <p>
+            Make a file called
+            <span class="code">meta.txt</span>
+            besides your
+            <span class="code">package.json</span>
+          </p>
+          <p>
+            In that file put in all the meta tags and stuff that you want in the head,
+            of the html.
+          </p>
+          <p>
+            Minify it with
+            
+            <a href="https://www.willpeavy.com/tools/minifier/" target="_blank">this</a>.
+          </p>
+          <p>
+            Now, every time you do a build, just copy the content of this file and
+            paste it in the head of
+            <span class="code">index.html</span>
+            inside the
+            <span class="code">dist/</span>
+            directory.
+          </p>
+          <p>
+            The link preview will start looking beautiful after this.
+            NOT FINISHED
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3">
+          <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" async><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/dunce07"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" async><span style="margin-left:5px;font-size:28px !important;">Buy me a coffee</span></a>
+        </div>
+      </div>
+    </div>
+    <script src="../js/latex.js"></script>
+    <script src="../js/github-cards.js" async></script>
+    <script src="../js/main.js"></script>
+    <footer>
+      Made with love by
+      <a href="https://abhishek-deshmukh.ml" target="_blank">Abhishek Anil Deshmukh</a>
+    </footer>
+  </body>
+</html>
