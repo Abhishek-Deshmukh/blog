@@ -3,6 +3,7 @@ const {src, dest, series, watch, lastRun, parallel} = require('gulp');
 const gutil = require('gulp-util');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
+sass.compiler = require('sass');
 const packageImporter = require('node-sass-package-importer');
 const typescript = require('gulp-typescript');
 const rename = require('gulp-rename');
