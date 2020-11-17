@@ -12,7 +12,7 @@
   src: url(../static/fonts/FiraMono-Regular.otf);
 }
 html {
-  background: black;
+  background: #232323;
   color: white;
   -webkit-box-sizing: initial;
   box-sizing: initial;
