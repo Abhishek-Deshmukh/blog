@@ -29,7 +29,7 @@
     "gulp-sass": "^4.1.0",
     "gulp-util": "^3.0.8",
     "kind-of": "^6.0.3",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "normalize.css": "^8.0.1",
     "sass": "^1.29.0"
   },
